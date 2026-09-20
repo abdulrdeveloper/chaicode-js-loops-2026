@@ -36,5 +36,25 @@
  *   rangoli(3) // => ["  *", " * *", "* * *", " * *", "  *"]
  */
 export function rangoli(n) {
-  // Your code here
+  if (typeof n !== 'number' || n <= 0 || !Number.isInteger(n)) {
+    return [];
+  }
+
+  const pattern = [];
+  const width = 2 * n - 1;
+
+  for (let i = 1; i <= n; i++) {
+    const stars = '* '.repeat(i).trim();
+    const padding = ' '.repeat((width - stars.length) / 2);
+    pattern.push(padding + stars);
+  }
+
+  for (let i = n - 1; i >= 1; i--) {
+    const stars = '* '.repeat(i).trim();
+    const padding = ' '.repeat((width - stars.length) / 2);
+    pattern.push(padding + stars);
+  }
+
+  return pattern;
 }
+// this is just a nested for loop problem, no need to overthink on it. If you don`t understand the problem , it`s not big issue , just see it 3-4 times and go ahead.
